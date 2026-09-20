@@ -1,0 +1,3 @@
+[submodule "open-lights"]
+    path = open-lights
+    url = https://github.com/CappleApple/open-lights.git
