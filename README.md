@@ -2,7 +2,7 @@
 
 Forge 1.20.1 weapon flashlight integration for TaCZ, powered by the independently implemented [Open Lights](https://github.com/CappleApple/open-lights) mod.
 
-Open Lights is a standalone mod with point, spot, and rectangular area lights, block-shape shadows, volumetric beams, colored glass transmission, a handheld flashlight, and placeable lights. Other mods can use its [public API](https://github.com/CappleApple/open-lights/blob/main/docs/api.md).
+Open Lights 2.0 is a rendering library for point, spot, and rectangular area lights, with block-shape shadows, volumetric beams, and colored glass transmission. Its handheld flashlight and world-lighting features are separate optional mods: Open Lights Flashlight and OL Global Illumination. Other mods can use its [public API](https://github.com/CappleApple/open-lights/blob/main/docs/api.md).
 
 ## Installation
 
@@ -11,10 +11,12 @@ Use Minecraft 1.20.1, Java 17, and Forge 47.4.10 or newer in the 47.x series.
 Install:
 
 1. [TaCZ 1.1.8-hotfix](https://modrinth.com/mod/timeless-and-classics-zero).
-2. `openlights-1.20.1-1.1.1.jar`.
+2. `openlights-1.20.1-1.8.3.jar` when using the published TaCZ integration 1.1.2.
 3. `taczopenlights-1.20.1-1.1.2.jar`.
 
-Install Open Lights on both clients and the server for its items and blocks. Install the TaCZ addon on the server too to synchronize weapon-light toggles. Without the addon server relay, your toggle works locally and other players' recognized weapon lights default to enabled.
+This source checkout accepts Open Lights 2.x. The published TaCZ integration 1.1.2 declares a version below 2.0; build the updated integration from source before using the [separate Open Lights 2.0 mods](open-lights/README.md).
+
+TaCZ weapon lights need only the Open Lights library; they do not require either optional addon. The handheld flashlight addon requires both client and server installation. Install the GI addon on both sides when using its placed lights. Install the TaCZ addon on the server too to synchronize weapon-light toggles. Without the addon server relay, your toggle works locally and other players' recognized weapon lights default to enabled.
 
 Neither mod depends on Flashier Flashlights or Veil.
 
