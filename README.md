@@ -8,19 +8,19 @@ Open Lights 2.0 is a rendering library for point, spot, and rectangular area lig
 
 Use Minecraft 1.20.1, Java 17, and Forge 47.4.10 or newer in the 47.x series.
 
-Install:
+Download the integration from the [1.2.0 release](https://github.com/CappleApple/tacz-open-lights/releases/tag/v1.2.0) and the library from [Open Lights 2.0.1](https://github.com/CappleApple/open-lights/releases/tag/v2.0.1). Install:
 
-1. [TaCZ 1.1.8-hotfix](https://modrinth.com/mod/timeless-and-classics-zero).
-2. `openlights-1.20.1-1.8.3.jar` when using the published TaCZ integration 1.1.2.
-3. `taczopenlights-1.20.1-1.1.2.jar`.
+1. [TaCZ 1.2.0 or 1.1.8-hotfix](https://modrinth.com/mod/timeless-and-classics-zero).
+2. `openlights-1.20.1-2.0.1.jar`.
+3. `taczopenlights-1.20.1-1.2.0.jar`.
 
-This source checkout accepts Open Lights 2.x. The published TaCZ integration 1.1.2 declares a version below 2.0; build the updated integration from source before using the [separate Open Lights 2.0 mods](open-lights/README.md).
+Version 1.2.0 adds TaCZ 1.2 support and requires Open Lights 2.0.1 or later in 2.x for the surface-color fix. Replace both older JARs when updating. TaCZ 1.1.8-hotfix remains supported.
 
 TaCZ weapon lights need only the Open Lights library; they do not require either optional addon. The handheld flashlight addon requires both client and server installation. Install the GI addon on both sides when using its placed lights. Install the TaCZ addon on the server too to synchronize weapon-light toggles. Without the addon server relay, your toggle works locally and other players' recognized weapon lights default to enabled.
 
 Neither mod depends on Flashier Flashlights or Veil.
 
-Embeddium 0.3.31 and Oculus 1.8.0 were tested with Complementary Reimagined r5.9.3. Install those optional mods normally; Open Lights detects the shader API automatically. See [rendering limits](https://github.com/CappleApple/open-lights#rendering-and-limits) for the tested scope.
+Earlier Open Lights builds were tested with Embeddium 0.3.31, Oculus 1.8.0, and Complementary Reimagined r5.9.3. Those results do not establish coverage for the updated renderer. Open Lights detects the shader API automatically; see [rendering limits](https://github.com/CappleApple/open-lights#rendering-limits) for the tested scope.
 
 ## Weapon lights
 
@@ -49,7 +49,7 @@ The addon creates `config/taczopenlights-client.toml`.
 | --- | --- | --- |
 | `enabled` | `true` | Render weapon lights. |
 | `automaticDetection` | `true` | Recognize flashlight-like bones on LASER attachments. |
-| `remoteDistance` | `64.0` | Provider cutoff for remote weapon lights; Open Lights also applies its 32-block scene limit. |
+| `remoteDistance` | `64.0` | Provider cutoff for remote weapon lights; Open Lights applies its own viewing-distance and source-range limits. |
 | `emitters` | Mappings below | Assign attachment IDs to exact model bones. |
 | `disabledAttachments` | `["tacz:laser_compact"]` | Exclude attachments. |
 
@@ -75,8 +75,8 @@ Open Lights is pinned as the `open-lights` Git submodule. Clone with `git clone 
 
 Outputs:
 
-- `build/libs/taczopenlights-1.20.1-1.1.2.jar`
-- `open-lights/build/libs/openlights-1.20.1-1.1.1.jar`
+- `build/libs/taczopenlights-1.20.1-1.2.0.jar`
+- `open-lights/build/libs/openlights-1.20.1-2.0.1.jar` (library; the subproject also builds the separate optional addons)
 
 Development dependencies are downloaded by Gradle and are not bundled in either mod. The addon retains the requested Java package `com.cappleapple.taczflashierflashlights`; Open Lights uses `com.cappleapple.openlights`.
 

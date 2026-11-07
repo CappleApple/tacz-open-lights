@@ -120,6 +120,12 @@ public final class TaczRenderContext {
                 }
             }
             CONTEXTS.pop();
+            // TaCZ 1.2 retains the 1.1 wrapper, which delegates to its buffered overload.
+            // Carry capture completion back out so the wrapper does not submit a second pose.
+            Context parent = CONTEXTS.peek();
+            if (parent != null && parent.model == context.model && parent.owner == context.owner) {
+                parent.submitted |= context.submitted;
+            }
         }
     }
 
@@ -129,6 +135,15 @@ public final class TaczRenderContext {
         }
         return model.getIndexBones().keySet().stream().filter(context::accepts).sorted()
                 .map(model::getNode).filter(java.util.Objects::nonNull).findFirst().orElse(null);
+    }
+
+    static String emitterBone(ResourceLocation attachmentId, AttachmentType type, BedrockAttachmentModel model) {
+        String explicit = ClientConfig.emitterBone(attachmentId);
+        if (explicit != null) return model.getNode(explicit) == null ? null : explicit;
+        if (type != AttachmentType.LASER || !ClientConfig.automaticDetection()) return null;
+        return model.getIndexBones().keySet().stream()
+                .filter(name -> name != null && AUTOMATIC_EMITTER.matcher(name).matches())
+                .sorted().findFirst().orElse(null);
     }
     private static final class Context {
         final LivingEntity owner;

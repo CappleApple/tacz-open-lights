@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.2.0 - 2026-11-06
+
+### Added
+
+- Support for TaCZ 1.2.0 on Minecraft 1.20.1. TaCZ 1.1.8 remains supported.
+
+### Fixed
+
+- Flashlight lighting washing out block colors and textures.
+
+### Changed
+
+- Requires Open Lights 2.0.1 or newer.
+
+## 1.1.3 - Unreleased
+
+### Fixed
+
+- Provide a distinct integration build that accepts Open Lights 2.x. Older 1.1.2 binaries restricted Open Lights to versions below 2.0.
+- Verify packaged version and dependency metadata, and keep development QA classes and refmaps out of the runtime JAR.
+
+TaCZ weapon lights require only the Open Lights library. OL Global Illumination and Open Lights Flashlight are optional separate mods.
+
 ## 1.1.2 - 2026-09-20
 
 ### Changed

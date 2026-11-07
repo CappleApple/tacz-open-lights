@@ -1,0 +1,7 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="taczopenlights_integration_qa"
+version="1"
+displayName="TaCZ Open Lights Integration QA (development only)"
